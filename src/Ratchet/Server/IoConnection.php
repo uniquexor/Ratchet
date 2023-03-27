@@ -1,5 +1,6 @@
 <?php
 namespace Ratchet\Server;
+use GuzzleHttp\Psr7\Request;
 use Ratchet\ConnectionInterface;
 use React\Socket\ConnectionInterface as ReactConn;
 
@@ -12,6 +13,17 @@ class IoConnection implements ConnectionInterface {
      */
     protected $conn;
 
+    public int|null $resourceId = null;
+
+    public string|null $remoteAddress = null;
+
+    public bool|null $httpHeadersReceived = null;
+
+    public string|null $httpBuffer = null;
+
+    public Request|null $httpRequest = null;
+
+    public \stdClass|null $WebSocket = null;
 
     /**
      * @param \React\Socket\ConnectionInterface $conn
